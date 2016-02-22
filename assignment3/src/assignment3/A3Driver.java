@@ -83,7 +83,190 @@ public class A3Driver {
 	 * methods to fill out
 	 */
 	public static void insert(String[] inputCommands){
-		
+		try {
+			String name;
+			double salePrice;
+			int quantity;
+			int weight;
+			String classification;
+			String state;
+
+			switch(inputCommands[1]) {
+			case "clothing":
+				if (inputCommands.length != 6) {
+					System.err.println("Invalid Input: Illegal format");
+					return;
+				}
+				name = inputCommands[2];
+
+				// inspect salePrice
+				try {
+					salePrice = Double.parseDouble(inputCommands[3]);
+					if (salePrice < 0) {
+						System.err.println("Invalid Input: Sale price must be positive");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Sale price must be a number");
+					return;
+				}
+
+				// inspect quantity
+				try {
+					quantity = Integer.parseInt(inputCommands[4]);
+					if (quantity < 0) {
+						System.err.println("Invalid Input: Quantity must be a non-negative number");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Quantity must be a whole number");
+					return;
+				}
+
+				// inspect weight
+				try {
+					weight = Integer.parseInt(inputCommands[5]);
+					if (quantity < 0) {
+						System.err.println("Invalid Input: Weight must be a non-negative number");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Weight must be a whole number");
+					return;
+				}
+
+				shoppingCart.add(new Clothing(name, salePrice, quantity, weight));
+				break;
+
+			case "electronics":
+				if (inputCommands.length != 8) {
+					System.err.println("Invalid Input: Illegal Format");
+					return;
+				}
+				name = inputCommands[2];
+
+				// inspect salePrice
+				try {
+					salePrice = Double.parseDouble(inputCommands[3]);
+					if (salePrice < 0) {
+						System.err.println("Invalid Input: Sale price must be positive");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Sale price must be a number");
+					return;
+				}
+
+				// inspect quantity
+				try {
+					quantity = Integer.parseInt(inputCommands[4]);
+					if (quantity < 0) {
+						System.err.println("Invalid Input: Quantity must be a non-negative number");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Quantity must be a whole number");
+					return;
+				}
+
+				// inspect weight
+				try {
+					weight = Integer.parseInt(inputCommands[5]);
+					if (quantity < 0) {
+						System.err.println("Invalid Input: Weight must be a non-negative number");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Weight must be a whole number");
+					return;
+				}
+
+				// inspect classification
+				classification = inputCommands[6];
+				if (!classification.equals("F") && !classification.equals("NF")) {
+					System.err.println("Invalid Input: Illegal classification");
+					return;
+				}
+
+				// inspect state
+				state = inputCommands[7];
+				if (state.length() != 2) {
+					System.err.println("Invalid Input: State code must be 2-letter long");
+				}
+				shoppingCart.add(new Electronics(name, salePrice, quantity, weight, classification, state));
+				break;
+
+			case "groceries":
+				if (inputCommands.length != 7) {
+					System.err.println("Invalid Input: Illegal Format");
+					return;
+				}
+				name = inputCommands[2];
+
+				// inspect salePrice
+				try {
+					salePrice = Double.parseDouble(inputCommands[3]);
+					if (salePrice < 0) {
+						System.err.println("Invalid Input: Sale price must be positive");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Sale price must be a number");
+					return;
+				}
+
+				// inspect quantity
+				try {
+					quantity = Integer.parseInt(inputCommands[4]);
+					if (quantity < 0) {
+						System.err.println("Invalid Input: Quantity must be a non-negative number");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Quantity must be a whole number");
+					return;
+				}
+
+				// inspect weight
+				try {
+					weight = Integer.parseInt(inputCommands[5]);
+					if (quantity < 0) {
+						System.err.println("Invalid Input: Weight must be a non-negative number");
+						return;
+					}
+				}
+				catch (NumberFormatException e) {
+					System.err.println("Invalid Input: Weight must be a whole number");
+					return;
+				}
+
+				// inspect classification
+				classification = inputCommands[6];
+				if (!classification.equals("P") && !classification.equals("NP")) {
+					System.err.println("Invalid Input: Illegal classification");
+					return;
+				}
+
+				shoppingCart.add(new Grocery(name, salePrice, quantity, weight, classification));
+				break;
+			default:
+				// keyword does not exist
+				System.err.println("Invalid Input: Illegal Category");
+				return;
+			}
+		}
+		catch (IndexOutOfBoundsException e) {
+			System.err.println("Invalid Input: Illegal Format");
+			return;
+		}
 	}
 
 	public static void search(String[] inputCommands){
@@ -138,7 +321,7 @@ public class A3Driver {
 	}
 
 	public static void print(String[] inputCommands){
-
+		
 	}
 
 }
