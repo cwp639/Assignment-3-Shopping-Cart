@@ -1,21 +1,24 @@
-package assignment3;
+package Assignment3;
 
 public class Clothing extends Item 
-{
-
-	// variables, constructors as necessary
-	
-	float calculatePrice () 
-	{
-		float final_price = 0;
-		// Insert price calculation here
-		return final_price;
+{	
+	//constructor
+	public Clothing(String name, double salePrice, int quantity, int weight) {
+		super(name, salePrice,quantity, weight);
+		calcShippingFee();
+		calcPriceAfterTax();
 	}
 	
-	void printItemAttributes () 
-	{
-		//Print all applicable attributes of this sub-class
+	@Override
+	protected void calcShippingFee() {
+		shippingFee = 20*weight*quantity;
 	}
 	
-
+	@Override
+	protected void calcPriceAfterTax() {
+		priceAfterTax = salePrice * 1.2;
+	}
+	
+	
+	
 }
