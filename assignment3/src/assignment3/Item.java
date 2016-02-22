@@ -27,6 +27,7 @@ public class Item
 		this.quantity = quantity;
 		calcShippingFee();	// this will invoke the method in the subclass to which the variable refers
 		// so the shippingFee will be recalculated immediately
+		calcPriceAfterTax();
 	}
 	
 	

@@ -83,19 +83,58 @@ public class A3Driver {
 	 * methods to fill out
 	 */
 	public static void insert(String[] inputCommands){
-
+		
 	}
 
 	public static void search(String[] inputCommands){
-
+		if(inputCommands.length != 2){
+			System.err.println("Invalid Input: Illegal Format");
+			return;
+		}
+		int size = shoppingCart.size();
+		int count = 0;
+		for(int i = 0; i < size; i++){
+			if(shoppingCart.get(i).equals(inputCommands[1])){
+				count++;
+			}
+		}
+		System.out.println("Your search yielded " + count + " instances of item " + inputCommands[1] + ".");
 	}
 
 	public static void delete(String[] inputCommands){
-
+		if(inputCommands.length != 2){
+			System.err.println("Invalid Input: Illegal Format");
+			return;
+		}
+		int size = shoppingCart.size();
+		int count = 0;
+		for(int i = 0; i < size; i++){
+			if(shoppingCart.get(i).equals(inputCommands[1])){
+				shoppingCart.remove(i);
+				size--;
+				count++;
+			}
+		}
+		System.out.println(count + " instances of item " + inputCommands[1] + " was deleted.");
 	}
 
 	public static void update(String[] inputCommands){
-
+		if(inputCommands.length != 3){
+			System.err.println("Invalid Input: Illegal Format");
+			return;
+		}
+		if(inputCommands[2].matches("\\d+")){
+			int size = shoppingCart.size();
+			for(int i = 0; i < size; i++){
+				if(shoppingCart.get(i).equals(inputCommands)){
+					shoppingCart.get(i).quantity = Integer.parseInt(inputCommands[2]);
+					System.out.println("The quantity of item " + inputCommands[1] + " was updated to " + inputCommands[2] + ".");
+					return;
+				}
+			}
+			System.err.println("No instance of that item was found in the shopping cart.");
+		}
+		else return;
 	}
 
 	public static void print(String[] inputCommands){

@@ -19,7 +19,7 @@ public class Grocery extends Item {
 	@Override
 	protected void calcPriceAfterTax() {
 		// grocery has no tax
-		priceAfterTax = salePrice;
+		priceAfterTax = salePrice * quantity;
 	}
 	
 	// Only re-implement stuff you cannot get from the superclass (Item)

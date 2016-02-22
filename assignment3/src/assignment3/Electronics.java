@@ -31,7 +31,7 @@ public class Electronics extends Item
 			break;
 		}
 		
-		priceAfterTax = salePrice * (1 + tax);
+		priceAfterTax = salePrice * (1 + tax) * quantity;
 	}
 	
 	@Override
