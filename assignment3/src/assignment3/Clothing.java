@@ -16,7 +16,7 @@ public class Clothing extends Item
 	
 	@Override
 	protected void calcPriceAfterTax() {
-		priceAfterTax = salePrice * 1.2 * quantity;
+		priceAfterTax = salePrice * 1.1 * quantity;
 	}
 	
 	

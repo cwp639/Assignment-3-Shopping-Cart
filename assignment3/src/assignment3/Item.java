@@ -1,6 +1,6 @@
 package Assignment3;
 
-public class Item implements Comparable
+public class Item implements Comparable<Object>
 {
 	protected String name;
 	protected double salePrice;	// the sale price read from the input
@@ -17,8 +17,6 @@ public class Item implements Comparable
 		this.weight = weight;
 	}
 	
-	
-
 	public void updateQuantity(int quantity) {
 		this.quantity = quantity;
 		calcShippingFee();	// this will invoke the method in the subclass to which the variable refers
@@ -26,10 +24,25 @@ public class Item implements Comparable
 		calcPriceAfterTax();
 	}
 	
+	public double calculatePrice() {
+		double finalPrice = priceAfterTax + shippingFee;
+		return finalPrice;
+	}
+	
+	
 	@Override
 	public int compareTo(Object other) {
 		Item temp = (Item) other;
-		return this.name.compareTo(temp.name);
+		// if we compare the field name directly, then all upper case letters are considered "smaller" then lower case letters
+		// so we convert all names into lower case then compare
+		String name1 = this.name.toLowerCase();
+		String name2 = temp.name.toLowerCase();
+		if (name1.compareTo(name2) == 0) {
+			// if only possible difference is case, then compare the original name
+			return this.name.compareTo(temp.name);
+		}
+		else 
+			return name1.compareTo(name2);
 	}
 	
 	// methods that will be defined in subclasses
