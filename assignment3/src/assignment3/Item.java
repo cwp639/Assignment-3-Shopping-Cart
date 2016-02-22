@@ -17,6 +17,7 @@ public class Item implements Comparable
 		this.weight = weight;
 	}
 	
+	
 
 	public void updateQuantity(int quantity) {
 		this.quantity = quantity;

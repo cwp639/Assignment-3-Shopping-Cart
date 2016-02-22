@@ -5,6 +5,7 @@ public class Grocery extends Item {
 	
 	public Grocery(String name, double salePrice, int quantity, int weight, String classification) {
 		super(name, salePrice,quantity, weight);
+		this.classification = classification;
 		calcShippingFee();
 		calcPriceAfterTax();
 	}
