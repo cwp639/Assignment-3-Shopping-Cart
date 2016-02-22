@@ -309,19 +309,38 @@ public class A3Driver {
 		if(inputCommands[2].matches("\\d+")){
 			int size = shoppingCart.size();
 			for(int i = 0; i < size; i++){
-				if(shoppingCart.get(i).equals(inputCommands)){
-					shoppingCart.get(i).quantity = Integer.parseInt(inputCommands[2]);
+				if(shoppingCart.get(i).name.equals(inputCommands[1])){
+					shoppingCart.get(i).updateQuantity(Integer.parseInt(inputCommands[2]));
 					System.out.println("The quantity of item " + inputCommands[1] + " was updated to " + inputCommands[2] + ".");
 					return;
 				}
 			}
 			System.err.println("No instance of that item was found in the shopping cart.");
 		}
-		else return;
+		else{
+			System.err.println("Invalid Input: Quantity must be an integer");
+			return;
+		}
 	}
 
 	public static void print(String[] inputCommands){
-		
+		int total = 0;
+		ArrayList<Item> copy = (ArrayList<Item>) shoppingCart.clone();
+		int size = copy.size();
+		Collections.sort(copy);
+		for(int i = 0; i < size; i++){
+			System.out.println("Item: " + copy.get(i).name );
+			System.out.println("Sale Price: " + copy.get(i).salePrice);
+			System.out.println("Weight: " + copy.get(i).weight);
+			System.out.println("Quantity: " + copy.get(i).quantity );
+			System.out.println("Price with tax: " + copy.get(i).priceAfterTax);
+			System.out.println("Shipping Fee: " + copy.get(i).shippingFee);
+			double itemTotal = copy.get(i).priceAfterTax + copy.get(i).shippingFee;
+			System.out.println("Total cost: " + itemTotal);
+			System.out.println("");
+			total += itemTotal;
+		}
+		System.out.println("Total cost: " + total);
 	}
 
 }

@@ -1,6 +1,6 @@
 package Assignment3;
 
-public class Item 
+public class Item implements Comparable
 {
 	protected String name;
 	protected double salePrice;	// the sale price read from the input
@@ -18,11 +18,6 @@ public class Item
 	}
 	
 
-	public void printItemAttributes () {
-		
-	}
-	
-
 	public void updateQuantity(int quantity) {
 		this.quantity = quantity;
 		calcShippingFee();	// this will invoke the method in the subclass to which the variable refers
@@ -30,7 +25,11 @@ public class Item
 		calcPriceAfterTax();
 	}
 	
-	
+	@Override
+	public int compareTo(Object other) {
+		Item temp = (Item) other;
+		return this.name.compareTo(temp.name);
+	}
 	
 	// methods that will be defined in subclasses
 	// has to be protected because private methods cannot be overridden
