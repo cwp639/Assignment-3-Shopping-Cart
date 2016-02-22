@@ -274,6 +274,7 @@ public class A3Driver {
 			System.err.println("Invalid Input: Illegal Format");
 			return;
 		}
+		
 		int size = shoppingCart.size();
 		int count = 0;
 		for(int i = 0; i < size; i++){
@@ -285,42 +286,55 @@ public class A3Driver {
 	}
 
 	public static void delete(String[] inputCommands){
+		// check the length of input string
 		if(inputCommands.length != 2){
 			System.err.println("Invalid Input: Illegal Format");
 			return;
 		}
+		
 		int size = shoppingCart.size();
 		int count = 0;
 		for(int i = 0; i < size; i++){
-			if(shoppingCart.get(i).equals(inputCommands[1])){
+			if(shoppingCart.get(i).equals(inputCommands[1])) {
 				shoppingCart.remove(i);
+				i--;
 				size--;
 				count++;
 			}
 		}
 		System.out.println(count + " instances of item " + inputCommands[1] + " was deleted.");
+		
 	}
 
 	public static void update(String[] inputCommands){
+		// check the length of the input string
 		if(inputCommands.length != 3){
 			System.err.println("Invalid Input: Illegal Format");
 			return;
 		}
-		if(inputCommands[2].matches("\\d+")){
-			int size = shoppingCart.size();
-			for(int i = 0; i < size; i++){
-				if(shoppingCart.get(i).name.equals(inputCommands[1])){
-					shoppingCart.get(i).updateQuantity(Integer.parseInt(inputCommands[2]));
-					System.out.println("The quantity of item " + inputCommands[1] + " was updated to " + inputCommands[2] + ".");
-					return;
-				}
+		
+		int quantity;
+		try {
+			quantity = Integer.parseInt(inputCommands[2]);
+			if (quantity < 0) {
+				System.err.println("Invalid Input: Quantity must be non-negative");
+				return;
 			}
-			System.err.println("No instance of that item was found in the shopping cart.");
 		}
-		else{
-			System.err.println("Invalid Input: Quantity must be an integer");
+		catch (NumberFormatException e) {
+			System.err.println("Invalid Input: Quantity must be a whole number");
 			return;
 		}
+		
+		int size = shoppingCart.size();
+		for (int i = 0; i < size; i++){
+			if(shoppingCart.get(i).name.equals(inputCommands[1])){
+				shoppingCart.get(i).updateQuantity(quantity);
+				System.out.println("The quantity of item " + inputCommands[1] + " was updated to " + quantity + ".");
+				return;
+			}
+		}
+		System.err.println("No instance of that item was found in the shopping cart.");
 	}
 
 	public static void print(String[] inputCommands){
