@@ -50,6 +50,7 @@ public class A3Driver {
 	public static void parseInput(String inputLine) {
 		// split input String into individual commands
 		String[] inputCommands = inputLine.split("\\s+");
+//		System.out.println(Arrays.asList(inputCommands).toString());
 		try {
 			switch(inputCommands[0]) {
 			case "insert": 
@@ -295,6 +296,8 @@ public class A3Driver {
 			return;
 		}
 		
+		/*
+		 * the following code does not work since "size" in the condition does not change dynamically
 		int size = shoppingCart.size();
 		int count = 0;
 		for(int i = 0; i < size; i++){
@@ -302,10 +305,19 @@ public class A3Driver {
 				shoppingCart.remove(i);
 				i--;
 				size--;
-				count++;
+				count += shoppingCart.get(i).quantity;
 			}
 		}
-		System.out.println(count + " instances of item " + inputCommands[1] + " was deleted.");
+		*/
+		int count = 0;
+		ArrayList<Item> copy = (ArrayList<Item>) shoppingCart.clone();
+		for (Item ele: copy) {
+			if (ele.name.equals(inputCommands[1])) {
+				shoppingCart.remove(ele);	// .remove(obj) removes the object not according to the index
+				count += ele.quantity;
+			}
+		}
+		System.out.println(count + " " + inputCommands[1] + "(s) was deleted.");
 		
 	}
 
