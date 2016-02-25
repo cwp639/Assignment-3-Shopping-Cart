@@ -23,7 +23,7 @@ public class Clothing extends Item
 	protected void calcShippingFee() {
 		shippingFee = 20*weight*quantity;
 	}
-	
+	 
 	@Override
 	protected void calcPriceAfterTax() {
 		priceAfterTax = salePrice * 1.1 * quantity;
