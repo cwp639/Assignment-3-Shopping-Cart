@@ -1,6 +1,10 @@
 package Assignment3;
 
 /**
+ * Name: Xinyuan (Allen) Pan
+ * EID : xp572
+ *  Name: Chang Park
+ * EID: cwp639
  * A general class Item that will not directly reference to.
  * Better off if this is made an abstract class
  * implements Comparable interface to access and override compareTo() method
