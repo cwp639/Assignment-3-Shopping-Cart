@@ -1,5 +1,15 @@
 package Assignment3;
 
+/**
+ * Name: Xinyuan (Allen) Pan
+ * EID : xp572
+ *  Name: Chang Park
+ * EID: cwp639
+ * 
+ * Driver - holds the main class for input/output handling
+ */
+
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
