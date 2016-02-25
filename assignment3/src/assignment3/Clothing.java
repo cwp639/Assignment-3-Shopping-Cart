@@ -1,5 +1,9 @@
 package Assignment3;
 
+/**
+ * A subclass of Item
+ *
+ */
 public class Clothing extends Item 
 {	
 	//constructor

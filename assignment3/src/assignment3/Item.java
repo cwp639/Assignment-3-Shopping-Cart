@@ -1,5 +1,11 @@
 package Assignment3;
 
+/**
+ * A general class Item that will not directly reference to.
+ * Better off if this is made an abstract class
+ * implements Comparable interface to access and override compareTo() method
+ *
+ */
 public class Item implements Comparable<Object>
 {
 	protected String name;
@@ -20,7 +26,7 @@ public class Item implements Comparable<Object>
 	public void updateQuantity(int quantity) {
 		this.quantity = quantity;
 		calcShippingFee();	// this will invoke the method in the subclass to which the variable refers
-		// so the shippingFee will be recalculated immediately
+		// so the shippingFee and priceAfterTax will be recalculated immediately
 		calcPriceAfterTax();
 	}
 	

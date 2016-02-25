@@ -1,5 +1,8 @@
 package Assignment3;
 
+/**
+ * A subclass of Item class
+ */
 public class Electronics extends Item 
 {
 	private String classification;

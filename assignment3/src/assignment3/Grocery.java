@@ -1,5 +1,9 @@
 package Assignment3;
 
+/**
+ * A subclass of Item
+ *
+ */
 public class Grocery extends Item {
 	private String classification;
 	

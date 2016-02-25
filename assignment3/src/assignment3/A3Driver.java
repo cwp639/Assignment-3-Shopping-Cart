@@ -11,6 +11,7 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 public class A3Driver {
 	// global variable shoppingCart
 	public static ArrayList<Item> shoppingCart = new ArrayList<Item>();
+	// used to see if the state input for electronics is valid 
 	public static String[] states = new String[] { "AL", "AK", "AS", "AZ",
 			"AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "GU", "HI", "ID",
 			"IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MH", "MA", "MI",
@@ -99,6 +100,8 @@ public class A3Driver {
 		String classification;
 		String state;
 
+		// split into three cases with different formatting rules
+		// this will be tedious
 		switch(inputCommands[1]) {
 		case "clothing":
 			if (inputCommands.length != 6) {
@@ -358,9 +361,10 @@ public class A3Driver {
 			return;
 		}
 		double total = 0;
+		// don't want to sort the original ArrayList because the update() method only modifies the first occurrence 
 		ArrayList<Item> copy = (ArrayList<Item>) shoppingCart.clone();
 		int size = copy.size();
-		Collections.sort(copy);
+		Collections.sort(copy);	// uses compareTo() to sort. Specified in the Item class
 		for(int i = 0; i < size; i++){
 			System.out.println("Item: " + copy.get(i).name );
 			System.out.println("Sale Price: " + copy.get(i).salePrice);
