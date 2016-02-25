@@ -19,7 +19,7 @@ public class Grocery extends Item {
 		calcShippingFee();
 		calcPriceAfterTax();
 	}
-	
+	 
 	@Override
 	protected void calcShippingFee() {
 		shippingFee = 20*weight*quantity;
