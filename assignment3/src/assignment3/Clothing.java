@@ -1,3 +1,9 @@
+/**
+ * Name: Xinyuan (Allen) Pan
+ * EID : xp572
+*  Name: Chang Park
+* EID: cwp639
+ */
 package Assignment3;
 
 /**
